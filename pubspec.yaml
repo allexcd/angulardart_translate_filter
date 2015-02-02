@@ -1,0 +1,17 @@
+name: angulardart_translate_filter
+version: 0.1.0
+author: AlexCDumitru(AlexCD) <email@alexcd.eu>
+description: AngularDart i18n translate filter
+homepage: http://www.alexcd.eu
+environment:
+  sdk: '>=1.0.0 <2.0.0'
+dependencies:
+  angular: '>=1.1.0 <2.0.0'
+  browser: '>=0.10.0+2 <0.11.0'
+  web_components: '>=0.10.1 <0.11.0'
+dev_dependencies:
+  unittest: any
+transformers:
+- angular:
+    html_files:
+    - lib/components/header.html

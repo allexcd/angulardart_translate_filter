@@ -1,0 +1,17 @@
+
+  {
+    "test": {
+      "test2": "En"
+    },
+    "abc": {
+      "abc2": "xyz En"
+    },
+    "opc": {
+      "opc2": {
+        "opc3": {
+          "opc4": "done En"
+        }  
+      }
+    },
+    "test3": "En {{lang2}} bla bla"
+  }
