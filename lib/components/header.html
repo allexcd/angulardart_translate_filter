@@ -1,1 +1,15 @@
-<button ng-repeat="lang in translate.langsList" ng-click="translateConfig.setActiveLang(lang)" ng-bind="lang"></button>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Translate filter</a>
+        </div>
+        <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-3" aria-expanded="true">
+            <span ng-repeat="lang in translate.langsList">
+                <button type="button"
+                        class="btn btn-default navbar-btn"
+                        ng-click="translateConfig.setActiveLang(lang)"
+                        ng-bind="lang"></button>
+            </span>
+        </div>
+    </div>
+</nav>

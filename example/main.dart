@@ -18,12 +18,11 @@ class AppModule extends Module{
 }
 
 void main(){
-  TranslateConfig translateConfig = new TranslateConfig();
-  translateConfig.localeSetup = {
-    "activeLang": "En",
-    "localeFiles": {"prefix": 'i18n/lang-', "suffix": '.json'},
-    "langsList": ['En', 'Ro']
-  };
-  
+  TranslateSetup translateSetup = new TranslateSetup(
+      activeLangCode: 'En',
+      langsList: ['En', 'Ro'],
+      localeFiles: {'prefix': 'i18n/lang-', 'suffix': '.json'}
+  );
+
   applicationFactory().addModule(new AppModule()).run();
 }

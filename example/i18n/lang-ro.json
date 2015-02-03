@@ -1,17 +1,17 @@
-
-  {
-    "test": {
-      "test2": "Ro"
-    },
-    "abc": {
-      "abc2": "xyz Ro"
-    },
-    "opc": {
-      "opc2": {
-        "opc3": {
-          "opc4": "done Ro"
-        }  
+{
+  "title": "Conținut",
+  "test": {
+    "test2": "Acesta este un text"
+  },
+  "abc": {
+    "abc2": "xyz Ro"
+  },
+  "opc": {
+    "opc2": {
+      "opc3": {
+        "opc4": "Ro"
       }
-    },
-    "test3": "Ro {{lang2}} bla bla"
-  }
+    }
+  },
+  "test3": "Ro {{lang2}} bla bla"
+}

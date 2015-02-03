@@ -1,17 +1,17 @@
-
-  {
-    "test": {
-      "test2": "En"
-    },
-    "abc": {
-      "abc2": "xyz En"
-    },
-    "opc": {
-      "opc2": {
-        "opc3": {
-          "opc4": "done En"
-        }  
+{
+  "title": "Content",
+  "test": {
+    "test2": "This is a text"
+  },
+  "abc": {
+    "abc2": "xyz En"
+  },
+  "opc": {
+    "opc2": {
+      "opc3": {
+        "opc4": "En"
       }
-    },
-    "test3": "En {{lang2}} bla bla"
-  }
+    }
+  },
+  "test3": "En {{lang2}} bla bla"
+}

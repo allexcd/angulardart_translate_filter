@@ -9,11 +9,11 @@ import 'package:angulardart_translate_filter/angulardart_translate_filter.dart';
   useShadowDom: false
 )
 class Footer{
-  @NgOneWay('activeLang')
-  Map activeLang;
-  
-  TranslateConfig translateConfig;
-  Footer(this.translateConfig){
-    activeLang = translateConfig.getActiveLang;
+  @NgOneWay('activeLocale')
+  Map activeLocale;
+
+  Translate translate;
+  Footer(this.translate){
+    activeLocale = translate.getActiveLocale;
   }
 }

@@ -1,54 +1,47 @@
 part of Translate;
 
-class TranslatePersistingData {
-  static List langsList;
-  static Map langMap;
-  static Map localeFiles;
+Map activeLocale = {
+    "langCode": null,
+    "langMap": {
+    }
+};
+List langsListConfig;
+Map localeFilesConfig;
+
+abstract class LocaleMap {
+  _setLocaleMap(url) {
+    return HttpRequest.getString(url).then((String response) {
+      activeLocale["langMap"] = JSON.decode(response);
+    });
+  }
+}
+
+class TranslateSetup extends LocaleMap {
+  TranslateSetup({String activeLangCode, List langsList, Map localeFiles}) {
+    _setLocaleMap(localeFiles["prefix"] + activeLangCode.toLowerCase() + localeFiles["suffix"]).then((_) {
+      activeLocale["langCode"] = activeLangCode; //triggers the filter
+    });
+    langsListConfig = langsList;
+    localeFilesConfig = localeFiles;
+  }
 }
 
 @Injectable()
-class TranslateConfig extends TranslateLoader {
-  Map _activeLang = {
-    "langCode": null
-  };
-
-  void _setActiveLang(String lang) {
-    _setActiveLocaleMap(TranslatePersistingData.localeFiles["prefix"] + lang.toLowerCase() + TranslatePersistingData.localeFiles["suffix"]).then((_) {
-      _activeLang["langCode"] = lang;
-    });
-  }
-
-  void _setLocaleFiles(Map setup) {
-    TranslatePersistingData.localeFiles = setup;
-  }
-
-  void _setLangsList(List langs) {
-    TranslatePersistingData.langsList = langs;
-  }
-
-  get setActiveLang => _setActiveLang;
-  get getActiveLang => _activeLang;
-
-  void set localeSetup(Map setup) {
-    _setLocaleFiles(setup["localeFiles"]);
-    _setLangsList(setup["langsList"]);
-    _setActiveLang(setup["activeLang"]);
-  }
-}
-
-class TranslateLoader {
-  _setActiveLocaleMap(url) {
-    return HttpRequest.getString(url).then((String response) {
-      TranslatePersistingData.langMap = JSON.decode(response);
+class TranslateConfig extends LocaleMap {
+  void setActiveLang(String lang) {
+    _setLocaleMap(localeFilesConfig["prefix"] + lang.toLowerCase() + localeFilesConfig["suffix"]).then((_) {
+      activeLocale["langCode"] = lang;
     });
   }
 }
 
 @Injectable()
 class Translate {
-  List get langsList => TranslatePersistingData.langsList;
+  List get langsList => langsListConfig;
+
+  Map get getActiveLocale => activeLocale;
 
   String doTranslate(String key) {
-    return ObjectSearch.getPropertyValue(key, TranslatePersistingData.langMap).toString();
+    return ObjectSearch.getPropertyValue(key, activeLocale["langMap"]).toString();
   }
 }

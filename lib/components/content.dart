@@ -9,11 +9,11 @@ import 'package:angulardart_translate_filter/angulardart_translate_filter.dart';
   useShadowDom: false
 )
 class Content{
-  @NgOneWay('activeLang')
-  Map activeLang;
+  @NgOneWay('activeLocale')
+  Map activeLocale;
   
-  TranslateConfig translateConfig;
-  Content(this.translateConfig){
-    activeLang = translateConfig.getActiveLang;
+  Translate translate;
+  Content(this.translate){
+    activeLocale = translate.getActiveLocale;
   }
 }
